@@ -1,3 +1,10 @@
 <resources>
+
     <string name="app_name">LearnCompose</string>
+    <string name="placeholder_search">Search here</string>
+    <string name="placeholder_email">Email</string>
+    <string name="placeholder_password">Password</string>
+
+    <string name="btn_login">Login</string>
+
 </resources>
