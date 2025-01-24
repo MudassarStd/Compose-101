@@ -29,16 +29,16 @@ import com.android.learncompose.R
 fun FavoriteCollectionCard(
     modifier: Modifier = Modifier,
     @DrawableRes drawableRes: Int = 0,
-    @StringRes textRes: Int = 0) {
+    label: String) {
 
     Surface (
         color = MaterialTheme.colorScheme.surfaceVariant,
-        shape = MaterialTheme.shapes.medium
+        shape = MaterialTheme.shapes.medium,
+        modifier = modifier.height(80.dp)
     ) {
         Row(
             modifier = modifier
-                .width(255.dp)
-                .height(80.dp),
+                .width(255.dp),
             verticalAlignment = Alignment.CenterVertically
         ) {
             Image(
@@ -47,7 +47,7 @@ fun FavoriteCollectionCard(
                 contentDescription = null
             )
             Text(
-                text = stringResource(textRes),
+                text = label,
                 style = MaterialTheme.typography.titleMedium,
                 modifier = modifier
                     .fillMaxWidth()
@@ -60,5 +60,5 @@ fun FavoriteCollectionCard(
 @Preview(widthDp = 400)
 @Composable
 private fun FavoriteCollectionCardPreview() {
-    FavoriteCollectionCard()
+//    FavoriteCollectionCard()
 }

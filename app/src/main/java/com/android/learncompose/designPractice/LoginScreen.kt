@@ -36,7 +36,9 @@ import androidx.compose.ui.unit.dp
 import com.android.learncompose.R
 
 @Composable
-fun LoginScreen(modifier: Modifier = Modifier) {
+fun LoginScreen(
+    modifier: Modifier = Modifier,
+    onLoginClick: () -> Unit) {
     Surface(
         shape = MaterialTheme.shapes.medium,
         modifier = modifier
@@ -64,7 +66,7 @@ fun LoginScreen(modifier: Modifier = Modifier) {
             TextFieldComp(placeholderText = R.string.placeholder_password, leadingIcon = Icons.Default.AccountBox)
 
             ElevatedButton(
-                onClick = {},
+                onClick = { onLoginClick() },
                 modifier
                     .padding(vertical = 16.dp)
                     .fillMaxWidth()
@@ -113,7 +115,7 @@ fun TextFieldComp(
 @Composable
 private fun TFPreview() {
 
-    LoginScreen()
+//    LoginScreen()
 
 //    TextFieldComp(
 //        placeholderText = R.string.placeholder_search,

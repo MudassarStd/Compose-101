@@ -1,5 +1,6 @@
 package com.android.learncompose.codelab2.components
 
+import androidx.annotation.DrawableRes
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.paddingFromBaseline
@@ -18,12 +19,15 @@ import androidx.compose.ui.unit.dp
 import com.android.learncompose.R
 
 @Composable
-fun AlignYourBodyElement(modifier: Modifier = Modifier) {
+fun AlignYourBodyElement(
+    modifier: Modifier = Modifier,
+    @DrawableRes drawable: Int,
+    label: String) {
     Column (
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Image(
-            painter = painterResource(R.drawable.ic_launcher_background),
+            painter = painterResource(drawable),
             contentDescription = null,
             contentScale = ContentScale.Crop,
             modifier = modifier
@@ -32,7 +36,7 @@ fun AlignYourBodyElement(modifier: Modifier = Modifier) {
                 .clip(shape = CircleShape)
         )
         Text(
-            text = "Element Label",
+            text = label,
             style = MaterialTheme.typography.bodyMedium,
             modifier = modifier
                 .paddingFromBaseline(top = 24.dp, bottom = 8.dp)
@@ -43,5 +47,5 @@ fun AlignYourBodyElement(modifier: Modifier = Modifier) {
 @Preview
 @Composable
 private fun AlignYourBodyElementPreview() {
-    AlignYourBodyElement()
+//    AlignYourBodyElement()
 }
