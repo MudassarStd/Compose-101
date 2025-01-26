@@ -25,6 +25,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -60,32 +61,36 @@ class MainActivity: ComponentActivity() {
 
 @Composable
 fun MyApp(modifier: Modifier = Modifier) {
-    var showLogin by remember { mutableStateOf(true) }
+    var showLogin by remember { mutableStateOf(true) } // hoisted state being triggered from HomeScreenContent
 
-    if (showLogin) {
-        LoginScreen(modifier, onLoginClick = { showLogin = false })
-    } else {
-        HomeScreen(modifier)
-    }
-
-
+//    if (showLogin) {
+//        LoginScreen(modifier, onLoginClick = { showLogin = false })
+//    } else {
+        HomeScreen(modifier, content = {
+            HomeScreenContent(showDialog = {
+                showLogin = true
+            })
+        })
+//    }
 }
 
 @Composable
-fun HomeScreen(modifier: Modifier = Modifier) {
-
+fun HomeScreen(modifier: Modifier = Modifier, content: @Composable () -> Unit) {
     var showDialog by remember { mutableStateOf(false) }
-
     if (showDialog) {
         DialogComp()
     }
 
+//    HomeScreenContent()
+}
+
+
+@Composable
+fun HomeScreenContent(modifier: Modifier = Modifier, showDialog: () -> Unit) {
     Surface(color = MaterialTheme.colorScheme.onPrimary,
-        shape = MaterialTheme.shapes.extraLarge) {
-        Column (
-            modifier = modifier
-                .padding(vertical = 16.dp)
-        ) {
+        shape = MaterialTheme.shapes.extraLarge,
+        modifier = modifier.fillMaxSize()) {
+        Column  {
             SearchBar(Modifier.padding(horizontal = 12.dp))
             Text(
                 "Align your body",
@@ -102,7 +107,8 @@ fun HomeScreen(modifier: Modifier = Modifier) {
                 style = MaterialTheme.typography.titleMedium)
             FavoriteCollectionGrid()
             ElevatedButton(
-                onClick = { showDialog = true }
+                onClick = { showDialog() },
+                modifier = Modifier.align(alignment = Alignment.CenterHorizontally).padding(top = 24.dp)
             ) {
                 Text("Show dialog")
             }
@@ -143,7 +149,11 @@ fun FavoriteCollectionGrid(modifier: Modifier = Modifier) {
 @Composable
 private fun Preview() {
 //    AlignYourBodyRow(data = dataList)
-    MyApp(Modifier.fillMaxSize())
+    HomeScreen(content = {
+        HomeScreenContent(showDialog = {
+
+        })
+    })
 //    FavoriteCollectionGrid()
 }
 

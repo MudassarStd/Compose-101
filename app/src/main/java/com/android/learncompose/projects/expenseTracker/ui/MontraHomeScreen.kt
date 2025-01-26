@@ -1,5 +1,6 @@
 package com.android.learncompose.projects.expenseTracker.ui
 
+import android.content.Intent
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -38,6 +39,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.focus.focusModifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextRange
 import androidx.compose.ui.tooling.preview.Preview
@@ -45,6 +47,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.min
 import com.android.learncompose.R
 import com.android.learncompose.codelab2.HomeScreen
+import com.android.learncompose.designPractice.ScaffoldPracticeActivity
 import com.android.learncompose.projects.expenseTracker.model.Transaction
 import kotlin.contracts.contract
 
@@ -52,7 +55,7 @@ import kotlin.contracts.contract
 fun HomeScreenContent(modifier: Modifier = Modifier) {
     Column (
         horizontalAlignment = Alignment.CenterHorizontally,
-        modifier = Modifier.padding(horizontal = 16.dp)
+        modifier = modifier.padding(start = 16.dp, end = 16.dp, top = 16.dp)
     ) {
         // header row
         Row (
@@ -64,7 +67,7 @@ fun HomeScreenContent(modifier: Modifier = Modifier) {
                 painter = painterResource(R.drawable.ic_launcher_background),
                 contentDescription = "Profile Photo",
                 modifier = Modifier
-                    .size(48.dp)
+                    .size(36.dp)
                     .clip(CircleShape)
             )
             Text(
@@ -161,11 +164,15 @@ fun IncomeExpenseCard(modifier: Modifier = Modifier, label: String, amount: Stri
 
 @Composable
 fun TransactionCard(modifier: Modifier = Modifier, transaction: Transaction) {
+
+    val context = LocalContext.current
+
     Card (
         elevation = CardDefaults.cardElevation(8.dp),
         modifier = Modifier.fillMaxWidth().heightIn(max= 70.dp),
-        onClick = {}
-
+        onClick = {
+            context.startActivity(Intent(context, ScaffoldPracticeActivity::class.java))
+        }
     ) {
         Row (
             modifier = Modifier.padding(horizontal = 8.dp).fillMaxSize(),
