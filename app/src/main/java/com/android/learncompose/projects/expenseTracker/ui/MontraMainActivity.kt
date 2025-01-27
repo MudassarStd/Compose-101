@@ -10,11 +10,13 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.focusModifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import com.android.learncompose.designPractice.MyBottomNavigation
 import com.android.learncompose.projects.expenseTracker.components.MontraBottomNavigation
@@ -28,17 +30,17 @@ class MontraMainActivity : ComponentActivity() {
             LearnComposeTheme {
                 Scaffold(modifier = Modifier.fillMaxSize(),
                     bottomBar = { MontraBottomNavigation() },
-                    floatingActionButton = {
-                        FloatingActionButton(
-                            onClick = {},
-                            content = {
-                                Text("+")
-                            }
-                        )
-                    }
+//                    floatingActionButton = {
+//                        FloatingActionButton(
+//                            onClick = {},
+//                            content = {
+//                                Text("+")
+//                            }
+//                        )
+//                    }
                     )
                 { innerPadding ->
-                    TransactionScreenContent(modifier = Modifier.padding(innerPadding))
+                    BudgetScreenContent(modifier = Modifier.padding(innerPadding))
                 }
             }
         }
@@ -67,7 +69,7 @@ fun GreetingPreview3() {
             }
         )
         { innerPadding ->
-            TransactionScreenContent(modifier = Modifier.padding(innerPadding))
+            BudgetScreenContent(modifier = Modifier.padding(innerPadding))
         }
     }
 }

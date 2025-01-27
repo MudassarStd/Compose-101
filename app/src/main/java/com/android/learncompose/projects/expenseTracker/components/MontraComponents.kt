@@ -14,6 +14,7 @@ import androidx.compose.material3.BottomAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.NavigationBar
+import androidx.compose.material3.NavigationBarDefaults
 import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
@@ -55,12 +56,12 @@ fun MontraBottomBar(modifier: Modifier = Modifier) {
 
 @Composable
 fun MontraBottomNavigation(modifier: Modifier = Modifier) {
-    NavigationBar {
+    NavigationBar(windowInsets = NavigationBarDefaults.windowInsets) {
         NavigationBarItem(
             onClick = {},
             label = {Text("Home") },
             icon = {Icon(imageVector = Icons.Default.Home, contentDescription = null) },
-            selected = true
+            selected = false
         )
         NavigationBarItem(
             onClick = {},
@@ -69,7 +70,7 @@ fun MontraBottomNavigation(modifier: Modifier = Modifier) {
             selected = false
         )
         NavigationBarItem(
-            selected = false,
+            selected = true,
             onClick = { },
             label = {Text("Budget")},
             icon = { Icon(imageVector = Icons.Default.AccountBox, contentDescription = null) }
