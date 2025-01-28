@@ -20,25 +20,26 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun MontraTopAppbar(modifier: Modifier = Modifier) {
     TopAppBar(
-        title = {
-            Text("Explore APIs")
+        title  = {
+            Text("Explore APIs", textAlign = TextAlign.Center)
         },
         navigationIcon = {
             Icon(
                 imageVector = Icons.Default.ArrowBack, contentDescription = null, Modifier.padding(end = 8.dp)
             )
         },
-        actions = {
-            Row (horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                Icon(imageVector = Icons.Default.Search, contentDescription = null)
-            }
-        }
+//        actions = {
+//            Row (horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+//                Icon(imageVector = Icons.Default.Search, contentDescription = null)
+//            }
+//        }
     )
 }
 

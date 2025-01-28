@@ -69,7 +69,7 @@ fun GreetingPreview3() {
             }
         )
         { innerPadding ->
-            BudgetScreenContent(modifier = Modifier.padding(innerPadding))
+            AddIncomeExpenseScreen(modifier = Modifier.padding(innerPadding))
         }
     }
 }
