@@ -40,7 +40,7 @@ class MontraMainActivity : ComponentActivity() {
 //                    }
                     )
                 { innerPadding ->
-                    BudgetScreenContent(modifier = Modifier.padding(innerPadding))
+                    TransactionDetailsScreen(modifier = Modifier.padding(innerPadding))
                 }
             }
         }
