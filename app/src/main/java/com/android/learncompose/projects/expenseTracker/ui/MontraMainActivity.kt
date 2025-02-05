@@ -47,7 +47,6 @@ class MontraMainActivity : ComponentActivity() {
     }
 }
 
-
 @Composable
 fun MontraMain(modifier: Modifier = Modifier) {
     HomeScreenContent(modifier = modifier)
